@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/screens/splash/auth/auth.dart';
 import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
 
@@ -11,6 +12,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2),
+        () => Navigator.pushNamed(context, LoginRegisterScreen.routeName));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
