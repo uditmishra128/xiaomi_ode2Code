@@ -88,7 +88,7 @@ class _SignInState extends State<SignIn> {
                 },
                 icon: Icon(
                   Icons.remove_red_eye,
-                  color: obscure ? primary : primary.withOpacity(0.3),
+                  color: obscure ? blueBerry3 : blueBerry4.withOpacity(0.3),
                   size: 25.0,
                 ),
               ),
@@ -98,7 +98,7 @@ class _SignInState extends State<SignIn> {
                 },
                 child: Text('Forget Password?',
                     style: headingStyle1(
-                        context: context, size: 14, color: txtHeadColor)),
+                        context: context, size: 14, color: primary)),
               ),
               onChanged: (String val) {
                 setState(() {});

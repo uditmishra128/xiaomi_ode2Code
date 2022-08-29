@@ -64,7 +64,7 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  !login ? 'Already have account?' : 'Don\'t have account?',
+                  !login ? 'Already a user?' : 'Don\'t have account?',
                   style: bodyStyle1(context: context, size: 16),
                 ),
                 TextButton(
@@ -76,7 +76,7 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
                     child: Text(
                       !login ? 'Sign In' : ' Sign Up',
                       style: headingStyle1(
-                          context: context, color: txtHeadColor, size: 15),
+                          context: context, color: primary, size: 15),
                     ))
               ],
             ),
