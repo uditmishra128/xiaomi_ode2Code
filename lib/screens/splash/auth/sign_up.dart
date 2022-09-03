@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/handler/auth.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/decoration.dart';
+import 'package:xiomi_ode_to_code/utils/toast.dart';
 import 'package:xiomi_ode_to_code/utils/validator.dart';
 import 'package:xiomi_ode_to_code/widget/common/custom_btn.dart';
 import 'package:xiomi_ode_to_code/widget/common/form_field.dart';
@@ -142,7 +146,38 @@ class _SignUpState extends State<SignUp> {
                       passController.text.isEmpty ||
                       confirmPassController.text.isEmpty
                   ? null
-                  : () async {},
+                  : () async {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      final form = signUpKey.currentState;
+                      if (form!.validate()) {
+                        form.save();
+                        setState(() {
+                          loading = true;
+                        });
+                        bool success = await registerUser(
+                            email: emailController.text,
+                            password: passController.text,
+                            context: context);
+                        if (success) {
+                          Navigator;
+                        } else {
+                          showFlagMsg(
+                              context: context,
+                              msg: 'Unable to register user, Please try again!',
+                              textColor: red);
+                          Timer(const Duration(seconds: 2), () {
+                            setState(() {
+                              loading = false;
+                            });
+                          });
+                        }
+                      } else {
+                        showFlagMsg(
+                            context: context,
+                            msg: 'Required fields are missing',
+                            textColor: red);
+                      }
+                    },
               curve: 12,
               focus: signUp,
             ),

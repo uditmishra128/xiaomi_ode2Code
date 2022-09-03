@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "812385210921",
+    "project_id": "xiomiodetocode",
+    "storage_bucket": "xiomiodetocode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812385210921:android:f9c44c71f0f6e34d618238",
+        "android_client_info": {
+          "package_name": "com.example.xiomi_ode_to_code"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812385210921-iab6mejartuo1ee54p0kp1jfh6vhd7j9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.xiomi_ode_to_code",
+            "certificate_hash": "9170c4a22712b0aefac51f7bfb54825f11f1977b"
+          }
+        },
+        {
+          "client_id": "812385210921-7vf2i79pidvi87fqqpjjebffgfft48j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh_sYbwVDyQu3ZVf0jJtK4GpsJ_AjGjGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812385210921-7vf2i79pidvi87fqqpjjebffgfft48j0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

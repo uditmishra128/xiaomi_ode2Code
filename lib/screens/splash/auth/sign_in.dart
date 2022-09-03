@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/handler/auth.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/decoration.dart';
 import 'package:xiomi_ode_to_code/utils/text_style.dart';
+import 'package:xiomi_ode_to_code/utils/toast.dart';
 import 'package:xiomi_ode_to_code/utils/validator.dart';
 import 'package:xiomi_ode_to_code/widget/common/custom_btn.dart';
 import 'package:xiomi_ode_to_code/widget/common/form_field.dart';
@@ -119,7 +123,39 @@ class _SignInState extends State<SignIn> {
               loading: loading,
               onTap: emailController.text.isEmpty || passController.text.isEmpty
                   ? null
-                  : () async {},
+                  : () async {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      final form = signInKey.currentState;
+                      if (form!.validate()) {
+                        form.save();
+                        setState(() {
+                          loading = true;
+                        });
+                        bool success = await logInUser(
+                            email: emailController.text,
+                            password: passController.text,
+                            context: context);
+                        if (success) {
+                          debugPrint('Success!');
+                          await getRoute(context: context);
+                        } else {
+                          showFlagMsg(
+                              context: context,
+                              msg: 'Unable to login, Please try again!',
+                              textColor: red);
+                          Timer(const Duration(seconds: 2), () {
+                            setState(() {
+                              loading = false;
+                            });
+                          });
+                        }
+                      } else {
+                        showFlagMsg(
+                            context: context,
+                            msg: 'Required fields are missing',
+                            textColor: red);
+                      }
+                    },
               curve: 12,
               focus: signIn,
             ),
