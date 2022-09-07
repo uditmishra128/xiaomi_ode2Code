@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:xiomi_ode_to_code/provider/auth.dart';
+import 'package:xiomi_ode_to_code/provider/navigator.dart';
 import 'package:xiomi_ode_to_code/screens/splash/splash.dart';
 import 'package:xiomi_ode_to_code/utils/locator.dart';
 import 'package:xiomi_ode_to_code/utils/routes.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => NavigationModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

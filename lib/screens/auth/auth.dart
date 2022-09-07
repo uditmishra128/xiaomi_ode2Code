@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xiomi_ode_to_code/screens/splash/auth/sign_in.dart';
-import 'package:xiomi_ode_to_code/screens/splash/auth/sign_up.dart';
+import 'package:xiomi_ode_to_code/screens/auth/sign_in.dart';
+import 'package:xiomi_ode_to_code/screens/auth/sign_up.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
