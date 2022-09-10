@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/utils/size.dart';
+import 'package:xiomi_ode_to_code/widget/home/categories_row.dart';
 
 class ImageSlider extends StatelessWidget {
   final int? curIndex;
@@ -18,37 +20,57 @@ class ImageSlider extends StatelessWidget {
       'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
     ];
 
-    return Stack(
-      children: [
-        CarouselSlider.builder(
-            itemCount: imgList.length,
-            itemBuilder: (context, index, realIndex) {
-              final urlImage = imgList[index];
-              return buildImage(urlImage, index);
-            },
-            options: CarouselOptions(
-              autoPlay: true,
-              onPageChanged: onPageChange,
-              viewportFraction: 1,
-              height: 250,
-            )),
-        Positioned.fill(
-          // bottom: 15,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return SizedBox(
+      height: screenSize(context).height * .5,
+      child: Stack(
+        children: [
+          CarouselSlider.builder(
+              itemCount: imgList.length,
+              itemBuilder: (context, index, realIndex) {
+                final urlImage = imgList[index];
+                return buildImage(urlImage, index);
+              },
+              options: CarouselOptions(
+                autoPlay: true,
+                onPageChanged: onPageChange,
+                viewportFraction: 1,
+                height: 350,
+              )),
+          Align(
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              padding: const EdgeInsets.only(top: 25, left: 10),
+              iconSize: 25,
+              color: Colors.white,
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  for (int i = 0; i < imgList.length; i++)
-                    i == curIndex ? pageIndicator(true) : pageIndicator(false),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (int i = 0; i < imgList.length; i++)
+                          i == curIndex
+                              ? pageIndicator(true)
+                              : pageIndicator(false),
+                      ],
+                    ),
+                  ),
+                  const CategoriesRow(),
                 ],
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

@@ -27,6 +27,7 @@ class CustomFormField extends StatefulWidget {
   final TextEditingController? controller;
   final TextInputType? inputType;
   final String? Function(String?)? validatorFn;
+  final EdgeInsetsGeometry? contentPadding;
   final Function(String)? onChanged;
   final Function()? onTap;
   final Function(String)? onFiledSubmitted;
@@ -58,6 +59,7 @@ class CustomFormField extends StatefulWidget {
       this.inputType,
       this.validatorFn,
       this.onChanged,
+      this.contentPadding,
       this.onTap,
       this.onFiledSubmitted,
       this.border})
@@ -116,7 +118,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
           decoration: InputDecoration(
               filled: true,
               fillColor: widget.fillColor ?? Colors.white,
-              contentPadding:
+              contentPadding: widget.contentPadding ??
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
               border: widget.border ?? border1,
               enabledBorder: widget.border ?? border1,
