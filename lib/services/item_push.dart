@@ -193,6 +193,7 @@ List<Item> audio = [
           'https://firebasestorage.googleapis.com/v0/b/xiomiodetocode.appspot.com/o/items%2Faudio%2Faudio_7.jfif?alt=media&token=bfb155ce-942a-438b-b8b8-ef4f5dcb5eca'),
 ];
 
+
 Future<File> getImageFileFromAssets(String path) async {
   final byteData = await rootBundle.load('assets/$path');
 
@@ -253,3 +254,4 @@ Future<File> getImageFileFromAssets(String path) async {
 //         .set(fitness[i].toJson());
 //   }
 // }
+
