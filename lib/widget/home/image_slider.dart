@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:xiomi_ode_to_code/screens/home/search_screen.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
 import 'package:xiomi_ode_to_code/widget/home/categories_row.dart';
 
@@ -43,7 +45,13 @@ class ImageSlider extends StatelessWidget {
               iconSize: 25,
               color: Colors.white,
               icon: const Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        child: const SearchScreen(),
+                        type: PageTransitionType.rightToLeft));
+              },
             ),
           ),
           Positioned.fill(

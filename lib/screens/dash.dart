@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xiomi_ode_to_code/provider/navigator.dart';
 import 'package:xiomi_ode_to_code/screens/account/account.dart';
 import 'package:xiomi_ode_to_code/screens/cart/cart.dart';
+import 'package:xiomi_ode_to_code/screens/categories/categories.dart';
 import 'package:xiomi_ode_to_code/screens/home/home.dart';
 import 'package:xiomi_ode_to_code/screens/reports/reports.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
@@ -19,10 +20,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   late PageController pageController;
   var currentTab = const [
     HomeScreen(),
+    CategoryScreen(),
     ReportScreen(),
     CartScreen(),
     AccountScreen(),
-    AccountScreen()
   ];
   @override
   void initState() {
@@ -42,6 +43,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: PageView(
           controller: pageController,
           onPageChanged: (index) {
@@ -78,7 +80,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.account_circle),
-                label: 'Home',
+                label: 'Account',
               ),
             ]),
       ),

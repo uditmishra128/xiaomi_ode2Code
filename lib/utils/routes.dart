@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xiomi_ode_to_code/screens/auth/auth.dart';
 import 'package:xiomi_ode_to_code/screens/auth/details.dart';
 import 'package:xiomi_ode_to_code/screens/dash.dart';
+import 'package:xiomi_ode_to_code/screens/home/search_screen.dart';
 import 'package:xiomi_ode_to_code/screens/splash/splash.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -9,4 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   LoginRegisterScreen.routeName: (context) => const LoginRegisterScreen(),
   DetailsScreen.routeName: (context) => const DetailsScreen(),
   DashBoardScreen.routeName: (context) => const DashBoardScreen(),
+  SearchScreen.routeName: (context) => const SearchScreen(),
 };

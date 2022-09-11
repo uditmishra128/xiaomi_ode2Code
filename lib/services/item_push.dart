@@ -1,4 +1,9 @@
 import '../model/item.dart';
+import 'dart:async';
+import 'dart:io';
+
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
 
 List<Item> mobile = [
   Item(
@@ -187,3 +192,66 @@ List<Item> audio = [
       imgUrl:
           'https://firebasestorage.googleapis.com/v0/b/xiomiodetocode.appspot.com/o/items%2Faudio%2Faudio_7.jfif?alt=media&token=bfb155ce-942a-438b-b8b8-ef4f5dcb5eca'),
 ];
+
+
+Future<File> getImageFileFromAssets(String path) async {
+  final byteData = await rootBundle.load('assets/$path');
+
+  final file = File('${(await getTemporaryDirectory()).path}/$path');
+  await file.writeAsBytes(byteData.buffer
+      .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+  return file;
+}
+
+// Future createItem() async {
+//   for (int i = 0; i < mobile.length; i++) {
+//     print('tvid$i');
+//     String id = const Uuid().v4();
+//     await FirebaseFirestore.instance
+//         .collection('mobiles')
+//         .doc(id)
+//         .set(mobile[i].toJson());
+//   }
+//   for (int i = 0; i < tv.length; i++) {
+//     print('tvid$i');
+//     String id = const Uuid().v4();
+//     await FirebaseFirestore.instance
+//         .collection('tvs')
+//         .doc(id)
+//         .set(tv[i].toJson());
+//   }
+//   for (int i = 0; i < laptop.length; i++) {
+//     print('laptopid$i');
+//     String id = const Uuid().v4();
+//     await FirebaseFirestore.instance
+//         .collection('laptops')
+//         .doc(id)
+//         .set(laptop[i].toJson());
+//   }
+//   for (int i = 0; i < home.length; i++) {
+//     print('homeid$i');
+//     String id = const Uuid().v4();
+//     await FirebaseFirestore.instance
+//         .collection('homes')
+//         .doc(id)
+//         .set(home[i].toJson());
+//   }
+//   for (int i = 0; i < audio.length; i++) {
+//     print('audioid$i');
+//     String id = const Uuid().v4();
+//     await FirebaseFirestore.instance
+//         .collection('audios')
+//         .doc(id)
+//         .set(audio[i].toJson());
+//   }
+//   for (int i = 0; i < fitness.length; i++) {
+//     print('fitnessid$i');
+//     String id = const Uuid().v4();
+//     await FirebaseFirestore.instance
+//         .collection('fitness')
+//         .doc(id)
+//         .set(fitness[i].toJson());
+//   }
+// }
+

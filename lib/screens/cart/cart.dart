@@ -25,7 +25,7 @@ class _CartScreenState extends State<CartScreen> {
               child: CustomButton(
                 title: 'Proceed To Buy ($totalItemCount item)',
                 color: yellow1,
-                onTap: () {},
+                onTap: () async {},
               ),
             ),
             Expanded(
