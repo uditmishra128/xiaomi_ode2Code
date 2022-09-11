@@ -25,12 +25,12 @@ class _CartScreenState extends State<CartScreen> {
               child: CustomButton(
                 title: 'Proceed To Buy ($totalItemCount item)',
                 color: yellow1,
-                onTap: () {},
+                onTap: () async {},
               ),
             ),
             Expanded(
                 child: ListView.builder(
-              itemBuilder: (context, index) => CartTile(),
+              itemBuilder: (context, index) => const CartTile(),
               itemCount: 8,
               shrinkWrap: true,
             )),
