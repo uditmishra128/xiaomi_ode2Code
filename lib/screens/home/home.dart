@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:xiomi_ode_to_code/model/item.dart';
+import 'package:xiomi_ode_to_code/provider/item_provider.dart';
 import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
 import 'package:xiomi_ode_to_code/utils/text_style.dart';
 import 'package:xiomi_ode_to_code/widget/home/mobile_row.dart';
-import 'package:xiomi_ode_to_code/widget/home/slider.dart';
+import 'package:xiomi_ode_to_code/widget/home/image_slider.dart';
 import 'package:xiomi_ode_to_code/widget/home/tv_grid.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,6 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final itemsProvider = Provider.of<ItemsProvider>(context);
+    List<Item> mobiles = itemsProvider.items
+        .where((element) => element.catId == 'mobilephonesmartphone')
+        .toList();
+    List<Item> tvs = itemsProvider.items
+        .where((element) => element.catId == 'televisiontvsmarttvandroidtv')
+        .toList();
+
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -40,11 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
           //mobiles
           _title('Smart Phones'),
-          const MobileRow(),
+          MobileRow(
+            mobiles: mobiles,
+          ),
 
           // tvs
           _title('Smart Tvs'),
-          const TVGrid(),
+          TVGrid(
+            tvs: tvs,
+          ),
         ],
       ),
     );

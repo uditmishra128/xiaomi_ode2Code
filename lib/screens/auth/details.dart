@@ -11,7 +11,7 @@ import 'package:xiomi_ode_to_code/widget/common/drop_down.dart';
 import 'package:xiomi_ode_to_code/widget/common/form_field.dart';
 
 class DetailsScreen extends StatefulWidget {
-  static String routeName = "/details";
+  static const String routeName = "/details";
   const DetailsScreen({Key? key}) : super(key: key);
 
   @override

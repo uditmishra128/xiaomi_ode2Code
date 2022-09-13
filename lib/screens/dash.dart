@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xiomi_ode_to_code/handler/items.dart';
 import 'package:xiomi_ode_to_code/provider/navigator.dart';
 import 'package:xiomi_ode_to_code/screens/account/account.dart';
 import 'package:xiomi_ode_to_code/screens/cart/cart.dart';
@@ -28,7 +29,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
     pageController = PageController();
+    getItems();
     super.initState();
+  }
+
+  getItems() async {
+    await getAllItems(context: context);
   }
 
   @override

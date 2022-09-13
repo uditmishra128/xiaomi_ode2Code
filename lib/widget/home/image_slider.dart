@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -86,8 +87,8 @@ class ImageSlider extends StatelessWidget {
 Widget buildImage(String urlImage, int index) {
   return Container(
     color: Colors.grey,
-    child: Image.network(
-      urlImage,
+    child: CachedNetworkImage(
+      imageUrl: urlImage,
       fit: BoxFit.cover,
     ),
   );

@@ -4,10 +4,11 @@ part 'item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Item {
+  final String? catId;
   final String? name;
   final int? price;
   final String? imgUrl;
-  Item({this.name, this.price, this.imgUrl});
+  Item({this.catId, this.name, this.price, this.imgUrl});
 
   factory Item.fromJson(json) => _$ItemFromJson(json);
 

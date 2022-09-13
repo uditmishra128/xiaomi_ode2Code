@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/services/item_push.dart';
 import 'package:xiomi_ode_to_code/widget/cart/cart_tile.dart';
 
 import '../../utils/color.dart';
@@ -25,7 +26,9 @@ class _CartScreenState extends State<CartScreen> {
               child: CustomButton(
                 title: 'Proceed To Buy ($totalItemCount item)',
                 color: yellow1,
-                onTap: () async {},
+                onTap: () async {
+                  await createItem();
+                },
               ),
             ),
             Expanded(

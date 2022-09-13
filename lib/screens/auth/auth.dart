@@ -7,7 +7,7 @@ import 'package:xiomi_ode_to_code/utils/size.dart';
 import 'package:xiomi_ode_to_code/utils/text_style.dart';
 
 class LoginRegisterScreen extends StatefulWidget {
-  static String routeName = "/login";
+  static const String routeName = "/login";
   const LoginRegisterScreen({Key? key}) : super(key: key);
 
   @override
