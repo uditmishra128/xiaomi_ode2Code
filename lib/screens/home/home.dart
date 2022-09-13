@@ -3,7 +3,7 @@ import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
 import 'package:xiomi_ode_to_code/utils/text_style.dart';
 import 'package:xiomi_ode_to_code/widget/home/mobile_row.dart';
-import 'package:xiomi_ode_to_code/widget/home/slider.dart';
+import 'package:xiomi_ode_to_code/widget/home/image_slider.dart';
 import 'package:xiomi_ode_to_code/widget/home/tv_grid.dart';
 
 class HomeScreen extends StatefulWidget {

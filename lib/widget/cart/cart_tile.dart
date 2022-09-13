@@ -15,8 +15,8 @@ class CartTile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            elevation: 6,
             color: Colors.white,
-            elevation: 8.0,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
