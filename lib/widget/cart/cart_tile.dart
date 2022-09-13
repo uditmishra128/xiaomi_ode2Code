@@ -13,8 +13,8 @@ class CartTile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
-            elevation: 6,
             color: Colors.white,
+            elevation: 8.0,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -31,63 +31,87 @@ class CartTile extends StatelessWidget {
                             image: AssetImage(logo),
                           ),
                         ),
-                        Text(
-                          '₹ $itemPrice',
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0),
-                        ),
-                        const Text(
-                          'In Stock',
-                          style: TextStyle(
-                            fontSize: 13.0,
-                            color: Colors.green,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Card(
-                              elevation: 1,
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    color: Colors.black45, width: 1),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: productQuantityButton(
-                                count: itemCount,
-                                price: itemPrice,
-                              ),
-                            ),
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    color: Colors.black45, width: 1),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              elevation: 2,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 7, horizontal: 11.0),
-                                child: Text(
-                                  'Delete',
-                                  style:
-                                      TextStyle(color: black1, fontSize: 12.0),
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Product Discription',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 20.0,
                                 ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                '₹ $itemPrice',
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0),
+                              ),
+                              const Text(
+                                'In Stock',
+                                style: TextStyle(
+                                  fontSize: 13.0,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    elevation: 1,
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                          color: Colors.black45, width: 1),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: productQuantityButton(
+                                      count: itemCount,
+                                      price: itemPrice,
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                            color: Colors.black45, width: 1),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      elevation: 2,
+                                      child: const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 7, horizontal: 11.0),
+                                        child: Text(
+                                          'Delete',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 12.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
