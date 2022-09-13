@@ -8,37 +8,27 @@ class CartTile extends StatelessWidget {
   final int itemPrice = 100000;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        color: Colors.white,
-        elevation: 8.0,
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 100.0,
-                  height: 100.0,
-                  padding: const EdgeInsets.all(12.0),
-                  child: Image.asset(
-                    logo,
-                  ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Product Discription',
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 20.0,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 6,
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: SizedBox(
+                          width: 100.0,
+                          height: 100.0,
+                          child: Image(
+                            image: AssetImage(logo),
                           ),
                         ),
                         Text(

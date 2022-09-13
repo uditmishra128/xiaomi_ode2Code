@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/screens/product_discription/text_const.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
@@ -16,7 +17,8 @@ class _ProductDescriptionState extends State<ProductDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -110,27 +112,30 @@ class _ProductDescriptionState extends State<ProductDescription> {
                   ],
                 ),
               ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 0.5, horizontal: 14),
+                child: Text(description),
+              ),
+              const SizedBox(
+                height: 80,
+              ),
             ],
           ),
         ),
-        bottomSheet: SizedBox(
-          width: screenSize(context).width,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            elevation: 3,
+      ),
+      bottomSheet: SizedBox(
+        width: screenSize(context).width,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: CustomButton(
+            title: 'Add to Cart',
             color: Colors.deepOrangeAccent,
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                'Buy Now',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            curve: 8,
+            onTap: () {},
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
