@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:xiomi_ode_to_code/provider/auth.dart';
+import 'package:xiomi_ode_to_code/provider/item_provider.dart';
 import 'package:xiomi_ode_to_code/provider/navigator.dart';
 import 'package:xiomi_ode_to_code/screens/splash/splash.dart';
 import 'package:xiomi_ode_to_code/utils/locator.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => NavigationModel()),
+        ChangeNotifierProvider(create: (context) => ItemsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -52,7 +54,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         initialRoute: SplashScreen.routeName,
-        routes: routes,
+        onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );
   }

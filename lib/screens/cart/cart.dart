@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/services/item_push.dart';
 import 'package:xiomi_ode_to_code/widget/cart/cart_tile.dart';
 
 import '../../utils/color.dart';
@@ -24,10 +25,18 @@ class _CartScreenState extends State<CartScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
               child: CustomButton(
+<<<<<<< report
                 title: 'Proceed To Billing ($totalItemCount item)',
                 color: Colors.deepOrangeAccent,
                 curve: 8,
                 onTap: () async {},
+=======
+                title: 'Proceed To Buy ($totalItemCount item)',
+                color: yellow1,
+                onTap: () async {
+                  await createItem();
+                },
+>>>>>>> master
               ),
             ),
             Expanded(

@@ -5,7 +5,7 @@ import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
 
 class SplashScreen extends StatefulWidget {
-  static String routeName = "/splash";
+  static const String routeName = "/splash";
   const SplashScreen({Key? key}) : super(key: key);
 
   @override

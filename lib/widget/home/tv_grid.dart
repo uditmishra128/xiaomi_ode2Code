@@ -1,51 +1,49 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:xiomi_ode_to_code/model/item.dart';
-import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/text_style.dart';
 
 class TVGrid extends StatelessWidget {
-  const TVGrid({Key? key}) : super(key: key);
+  final List<Item> tvs;
+  const TVGrid({Key? key, this.tvs = const []}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final item = Item(name: 'Xiomi 11i 5G', imgUrl: mobile, price: 11999);
     return Flexible(
       child: GridView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
-          itemCount: 6,
+          itemCount: tvs.length,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2),
           itemBuilder: (context, index) =>
-              buildTvCard(item: item, context: context)),
+              buildTvCard(item: tvs[index], context: context)),
     );
   }
 
-  Widget buildTvCard({Item? item, BuildContext? context}) {
-    final item = Item(name: 'Xiomi 11i 5G', imgUrl: miTV, price: 11999);
+  Widget buildTvCard({required Item item, BuildContext? context}) {
     var formatter = NumberFormat('#,##,000');
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-              height: 150,
-              child: Image.asset(
-                item.imgUrl!,
-                fit: BoxFit.fill,
-              )),
-          Text(
-            item.name ?? "",
-            style: bodyStyle1(context: context!, size: 12, color: Colors.black),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          height: 120,
+          child: CachedNetworkImage(
+            imageUrl: item.imgUrl!,
+            fit: BoxFit.fill,
           ),
-          Text(
-            formatter.format(item.price),
-            style: bodyStyle1(context: context, size: 12, color: Colors.black),
-          ),
-        ],
-      ),
+        ),
+        Text(
+          item.name ?? "",
+          style: bodyStyle1(context: context!, size: 12, color: Colors.black),
+        ),
+        Text(
+          '₹ ${formatter.format(item.price)}',
+          style: bodyStyle1(context: context, size: 12, color: Colors.black),
+        ),
+      ],
     );
   }
 }

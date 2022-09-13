@@ -1,13 +1,12 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:xiomi_ode_to_code/screens/product_discription/text_const.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/img_const.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
-import 'package:xiomi_ode_to_code/widget/common/custom_btn.dart';
+import 'package:xiomi_ode_to_code/utils/text_style.dart';
 
 class ProductDescription extends StatefulWidget {
+  static const String routeName = '/product_desc';
   const ProductDescription({Key? key}) : super(key: key);
 
   @override
@@ -48,10 +47,8 @@ class _ProductDescriptionState extends State<ProductDescription> {
                     ),
                     Text(
                       '24599 ',
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold,
-                          color: primary),
+                      style: headingStyle1(
+                          context: context, color: primary, size: 19),
                     ),
                     const Text(
                       '₹29899',
@@ -93,16 +90,11 @@ class _ProductDescriptionState extends State<ProductDescription> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        SpecificationText(
-                          size: '32 Inch',
-                        ),
-                        SpecificationText(
-                          size: '48 Inch',
-                        ),
-                        SpecificationText(
-                          size: '64 Inch',
-                        ),
+                      children: [
+                        for (int i = 1; i <= 3; i++)
+                          specificationText(
+                            size: '${32 * i} Inch',
+                          ),
                       ],
                     ),
                     const SizedBox(
@@ -110,16 +102,11 @@ class _ProductDescriptionState extends State<ProductDescription> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        SpecificationText(
-                          size: 'Color 1',
-                        ),
-                        SpecificationText(
-                          size: 'Color 2',
-                        ),
-                        SpecificationText(
-                          size: 'Color 1',
-                        ),
+                      children: [
+                        for (int i = 1; i <= 3; i++)
+                          specificationText(
+                            size: 'Color $i',
+                          )
                       ],
                     ),
                   ],
@@ -152,19 +139,15 @@ class _ProductDescriptionState extends State<ProductDescription> {
   }
 }
 
-class SpecificationText extends StatelessWidget {
-  const SpecificationText({Key? key, required this.size}) : super(key: key);
-  final String size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      size,
-      style: const TextStyle(
-        fontSize: 13.0,
-      ),
-    );
-  }
+Widget specificationText({
+  required String size,
+}) {
+  return Text(
+    size,
+    style: const TextStyle(
+      fontSize: 13.0,
+    ),
+  );
 }
 
 class SelectionCard extends StatelessWidget {
