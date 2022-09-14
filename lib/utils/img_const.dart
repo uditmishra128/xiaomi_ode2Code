@@ -23,6 +23,7 @@ List<String> productDescImageList = [
   'https://firebasestorage.googleapis.com/v0/b/xiomiodetocode.appspot.com/o/items%2Fconsole%2Fproduct4.png?alt=media&token=d91a47ef-dab2-429d-b1da-7a40a8fc1c3d',
   'https://firebasestorage.googleapis.com/v0/b/xiomiodetocode.appspot.com/o/items%2Fconsole%2Fproduct1.png?alt=media&token=4df46bd3-7651-443a-bd1a-f34475cb5b6f',
 ];
+
 List<IconData> homeCatIcon = [
   FontAwesomeIcons.mobile,
   FontAwesomeIcons.tv,
