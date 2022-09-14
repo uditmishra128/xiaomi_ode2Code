@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:xiomi_ode_to_code/model/item.dart';
 import 'package:xiomi_ode_to_code/screens/auth/auth.dart';
 import 'package:xiomi_ode_to_code/screens/auth/details.dart';
 import 'package:xiomi_ode_to_code/screens/dash.dart';
@@ -41,7 +42,9 @@ class RouteGenerator {
             type: PageTransitionType.rightToLeft);
       case ProductDescription.routeName:
         return PageTransition(
-            child: const ProductDescription(),
+            child: ProductDescription(
+              item: argument as Item,
+            ),
             settings: settings,
             type: PageTransitionType.fade);
       default:

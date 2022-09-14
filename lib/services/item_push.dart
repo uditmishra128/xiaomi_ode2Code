@@ -234,6 +234,7 @@ Future<File> getImageFileFromAssets(String path) async {
 Future createItem() async {
   for (int i = 0; i < mobile.length; i++) {
     String id = const Uuid().v4();
+    mobile[i].productId = i + 1;
     await FirebaseFirestore.instance
         .collection('items')
         .doc(id)

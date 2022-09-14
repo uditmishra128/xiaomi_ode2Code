@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:xiomi_ode_to_code/screens/product_discription/product_discription.dart';
+import 'package:xiomi_ode_to_code/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:xiomi_ode_to_code/model/item.dart';
 import 'package:xiomi_ode_to_code/provider/item_provider.dart';
@@ -93,9 +94,12 @@ class _SearchScreenState extends State<SearchScreen> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2),
               itemBuilder: (context, index) => _buildItem(
-                    item: _items[index],
-                    context: context,
-                  )),
+                  item: _items[index],
+                  context: context,
+                  onTap: () {
+                    Navigator.pushNamed(context, ProductDescription.routeName,
+                        arguments: _items[index]);
+                  })),
         )
       ]),
     );
@@ -103,10 +107,10 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _buildItem(
       {required Item item, required BuildContext context, Function()? onTap}) {
-    var formatter = NumberFormat('#,##,000');
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: Padding(
+      splashColor: Colors.black,
+      child: Ink(
         padding: const EdgeInsets.only(left: 10),
         child: Column(
           children: [

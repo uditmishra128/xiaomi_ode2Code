@@ -62,66 +62,43 @@ class _AccountScreenState extends State<AccountScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  _customListTile('Edit Profile', FontAwesomeIcons.userLarge,
-                      () {
-                    // Navigator.pushNamed(context, EditProfileScreen.routeName);
-                  }),
+                  _customListTile(
+                      'Edit Profile', FontAwesomeIcons.userLarge, () {}),
                   const Divider(
                     color: Colors.white,
                     thickness: 1,
                     height: 1,
                   ),
-
+                  _customListTile(
+                      'Anuual sell', FontAwesomeIcons.wallet, () {}),
                   const Divider(
                     color: Colors.white,
                     thickness: 1,
                     height: 1,
                   ),
-                  // _customListTile(TextConstants.of(context).pHistory,
-                  //     FontAwesomeIcons.wallet, () {}),
+                  _customListTile(
+                      'Change Pass word', FontAwesomeIcons.lock, () {}),
                 ],
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
-            // Container(
-            //   color: Colors.white,
-            //   child: _customListTile(
-            //       TextConstants.of(context).rate, FontAwesomeIcons.star, () {},
-            //       color: Colors.black),
-            // ),
-            const SizedBox(
-              height: 10,
+            Container(
+              color: Colors.white,
+              child: ListTile(
+                onTap: () async {},
+                leading: FaIcon(
+                  FontAwesomeIcons.rightFromBracket,
+                  color: red,
+                  size: 20,
+                ),
+                title: Text(
+                  'Log Out',
+                  style: bodyStyle2(context: context, color: red, size: 16),
+                ),
+              ),
             ),
-            // Container(
-            //   color: Colors.white,
-            //   child: _customListTile(TextConstants.of(context).pPolicy,
-            //       FontAwesomeIcons.shieldAlt, () {},
-            //       color: Colors.black),
-            // ),
-            const SizedBox(
-              height: 10,
-            ),
-            // Container(
-            //   color: Colors.white,
-            //   child: ListTile(
-            //     onTap: () async {
-            //     },
-            //     leading: FaIcon(
-            //       FontAwesomeIcons.signOutAlt,
-            //       color: AppColor.of(context).red,
-            //       size: 20,
-            //     ),
-            //     title: Text(
-            //       TextConstants.of(context).signout,
-            //       style: AppText.of(context).bodyStyle2(
-            //           context: context,
-            //           color: AppColor.of(context).red,
-            //           size: 16),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

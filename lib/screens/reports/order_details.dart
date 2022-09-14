@@ -14,7 +14,7 @@ class OrderDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: appBar(),
+      appBar: appBar(context: context),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(13.0),
@@ -84,7 +84,7 @@ class OrderDetails extends StatelessWidget {
   }
 }
 
-AppBar appBar() {
+AppBar appBar({required BuildContext context}) {
   return AppBar(
     leading: Container(
       margin: const EdgeInsets.all(7),
@@ -102,8 +102,7 @@ AppBar appBar() {
           color: primary,
         ),
         onPressed: () {
-          // Navigator.pop(context);
-          // do something
+          Navigator.pop(context);
         },
       ),
     ),
