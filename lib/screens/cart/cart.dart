@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:xiomi_ode_to_code/services/item_push.dart';
+import 'package:provider/provider.dart';
+import 'package:xiomi_ode_to_code/provider/cart_provider.dart';
+import 'package:xiomi_ode_to_code/utils/constants.dart';
+import 'package:xiomi_ode_to_code/utils/text_style.dart';
 import 'package:xiomi_ode_to_code/widget/cart/cart_tile.dart';
-
-import '../../utils/color.dart';
 import '../../widget/common/custom_btn.dart';
 
 class CartScreen extends StatefulWidget {
@@ -13,10 +14,13 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  int totalItemCount = 1;
-  int subtotal = 10000;
   @override
   Widget build(BuildContext context) {
+    int subtotal = 0;
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    for (var i in cartProvider.cartItems) {
+      subtotal += (i.itemCount * i.price!);
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -25,7 +29,8 @@ class _CartScreenState extends State<CartScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
               child: CustomButton(
-                title: 'Proceed To Billing ($totalItemCount item)',
+                title:
+                    'Proceed To Billing (${cartProvider.cartItems.length} item)',
                 color: Colors.deepOrangeAccent,
                 curve: 8,
                 onTap: () async {},
@@ -33,8 +38,21 @@ class _CartScreenState extends State<CartScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemBuilder: (context, index) => const CartTile(),
-                itemCount: 8,
+                itemBuilder: (context, index) => CartTile(
+                  item: cartProvider.cartItems[index],
+                  onCounterChange: (increment) {
+                    if (increment) {
+                      setState(() {
+                        cartProvider.cartItems[index].itemCount++;
+                      });
+                    } else if (cartProvider.cartItems[index].itemCount > 1) {
+                      setState(() {
+                        cartProvider.cartItems[index].itemCount--;
+                      });
+                    }
+                  },
+                ),
+                itemCount: cartProvider.cartItems.length,
                 shrinkWrap: true,
               ),
             ),
@@ -52,21 +70,14 @@ class _CartScreenState extends State<CartScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
+            children: [
               Text(
                 'Subtotal',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.black,
-                ),
+                style: bodyStyle2(context: context, size: 20),
               ),
               Text(
-                '₹ 10000',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
-                  color: Colors.black,
-                ),
+                formatter.format(subtotal),
+                style: headingStyle1(context: context, size: 20),
               ),
             ],
           ),

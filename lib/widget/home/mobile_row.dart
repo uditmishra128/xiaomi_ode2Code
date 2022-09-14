@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:xiomi_ode_to_code/model/item.dart';
-import 'package:intl/intl.dart';
+import 'package:xiomi_ode_to_code/utils/constants.dart';
 import 'package:xiomi_ode_to_code/screens/product_discription/product_discription.dart';
 import 'package:xiomi_ode_to_code/utils/text_style.dart';
 
@@ -24,14 +24,14 @@ class MobileRow extends StatelessWidget {
               item: mobiles[index],
               context: context,
               onTap: () {
-                Navigator.pushNamed(context, ProductDescription.routeName);
+                Navigator.pushNamed(context, ProductDescription.routeName,
+                    arguments: mobiles[index]);
               }),
         ));
   }
 
   Widget buildMobile(
       {required Item item, required BuildContext context, Function()? onTap}) {
-    var formatter = NumberFormat('#,##,000');
     return GestureDetector(
       onTap: onTap,
       child: Padding(

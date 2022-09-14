@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 
 import 'package:xiomi_ode_to_code/utils/size.dart';
-import 'package:xiomi_ode_to_code/utils/text_style.dart';
 import 'package:xiomi_ode_to_code/widget/common/custom_btn.dart';
 
 class PaymentSuccess extends StatelessWidget {

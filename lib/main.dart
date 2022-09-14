@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:xiomi_ode_to_code/provider/auth.dart';
+import 'package:xiomi_ode_to_code/provider/cart_provider.dart';
 import 'package:xiomi_ode_to_code/provider/item_provider.dart';
 import 'package:xiomi_ode_to_code/provider/navigator.dart';
 import 'package:xiomi_ode_to_code/screens/splash/splash.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => NavigationModel()),
         ChangeNotifierProvider(create: (context) => ItemsProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
