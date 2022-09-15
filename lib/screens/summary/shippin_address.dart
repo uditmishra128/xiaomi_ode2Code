@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:xiomi_ode_to_code/provider/bill_provider.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 
 import 'check_out_field.dart';
@@ -10,6 +12,7 @@ class ShippingAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final billProvider = Provider.of<BillProvider>(context, listen: false);
     return Column(
       children: [
         const CheckOutFeild(
@@ -39,18 +42,18 @@ class ShippingAddress extends StatelessWidget {
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  AddressText(
-                    text: 'Customer Name',
+                children: [
+                  _customText(
+                    billProvider.bill.customerName ?? "Customer name",
                   ),
-                  AddressText(
-                    text: '+91 889-995-2244',
+                  _customText(
+                    '+91 ${billProvider.bill.customerPhone ?? ' 889-995-xxxx'}',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  AddressText(
-                    text:
+                  _customText(
+                    billProvider.bill.customerAddress ??
                         'B/1, Nilkanth Chaya, 60 Feet Road, Ghatkopar,pant Nagar, Ghatkoper (east) Mumbai',
                   ),
                 ],
@@ -63,19 +66,11 @@ class ShippingAddress extends StatelessWidget {
   }
 }
 
-class AddressText extends StatelessWidget {
-  const AddressText({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(
-        fontSize: 13,
-      ),
-    );
-  }
+_customText(String text) {
+  return Text(
+    text,
+    style: const TextStyle(
+      fontSize: 13,
+    ),
+  );
 }

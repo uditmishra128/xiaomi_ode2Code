@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:xiomi_ode_to_code/model/bill.dart';
+import 'package:xiomi_ode_to_code/provider/bill_provider.dart';
+import 'package:xiomi_ode_to_code/screens/summary/summary.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/decoration.dart';
 import 'package:xiomi_ode_to_code/utils/size.dart';
@@ -8,6 +12,7 @@ import 'package:xiomi_ode_to_code/widget/common/custom_btn.dart';
 import 'package:xiomi_ode_to_code/widget/common/form_field.dart';
 
 class CustomerDetails extends StatefulWidget {
+  static const String routeName = '/customer_details';
   const CustomerDetails({Key? key}) : super(key: key);
 
   @override
@@ -15,11 +20,11 @@ class CustomerDetails extends StatefulWidget {
 }
 
 class _CustomerDetailsState extends State<CustomerDetails> {
-  String selectedCommunication = 'Whatsapp';
+  ModeOFComm selectedCommunication = ModeOFComm.whatsapp;
+  late Bill _curBill;
   late String cName, phoneNo, emailAddress, communicationChoice, address;
   late FocusNode name, phone, email, deliveryAddress;
   GlobalKey<FormState> customerDetailsKey = GlobalKey<FormState>();
-
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   bool loading = false;
@@ -29,6 +34,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
     name = FocusNode();
     phone = FocusNode();
     email = FocusNode();
+    _curBill = Bill();
     deliveryAddress = FocusNode();
     super.initState();
   }
@@ -44,7 +50,9 @@ class _CustomerDetailsState extends State<CustomerDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final billProvider = Provider.of<BillProvider>(context, listen: false);
     return Scaffold(
+      appBar: appBar(context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -94,10 +102,10 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     border: border4(Colors.black54, 8),
                     onChanged: (String val) {
                       setState(() {
-                        cName = val;
+                        _curBill = _curBill.copyWith(customerName: val);
                       });
                     },
-                    validatorFn: nameValidator,
+                    validatorFn: commanValidator,
                     textInputAction: TextInputAction.next,
                     inputType: TextInputType.text,
                     onFiledSubmitted: (String val) {
@@ -119,7 +127,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     controller: phoneController,
                     onChanged: (String val) {
                       setState(() {
-                        phoneNo = val;
+                        _curBill = _curBill.copyWith(customerPhone: val);
                       });
                     },
                     textInputAction: TextInputAction.next,
@@ -142,7 +150,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     controller: emailController,
                     onChanged: (String val) {
                       setState(() {
-                        emailAddress = val;
+                        _curBill = _curBill.copyWith(customerEmail: val);
                       });
                     },
                     textInputAction: TextInputAction.next,
@@ -166,7 +174,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     validatorFn: commanValidator,
                     onChanged: (String val) {
                       setState(() {
-                        address = val;
+                        _curBill = _curBill.copyWith(customerAddress: val);
                       });
                     },
                     textInputAction: TextInputAction.next,
@@ -195,28 +203,28 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       communicationTile(
                         const Radius.circular(200),
                         Radius.zero,
-                        selectedCommunication == 'Whatsapp'
+                        selectedCommunication == ModeOFComm.whatsapp
                             ? Colors.green
                             : Colors.black26,
                         Icons.whatsapp,
                         'Whatsapp',
                         () {
                           setState(() {
-                            selectedCommunication = 'Whatsapp';
+                            selectedCommunication = ModeOFComm.whatsapp;
                           });
                         },
                       ),
                       communicationTile(
                         Radius.zero,
                         const Radius.circular(200),
-                        selectedCommunication == 'Email'
+                        selectedCommunication == ModeOFComm.email
                             ? Colors.blueAccent
                             : Colors.black26,
                         Icons.email,
                         'Email',
                         () {
                           setState(() {
-                            selectedCommunication = 'Email';
+                            selectedCommunication = ModeOFComm.email;
                           });
                         },
                       ),
@@ -229,7 +237,16 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     title: 'Continue',
                     color: Colors.deepOrangeAccent,
                     curve: 8,
-                    onTap: () async {},
+                    onTap: () async {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      final form = customerDetailsKey.currentState;
+                      if (form!.validate()) {
+                        _curBill = _curBill.copyWith(
+                            modeOfComm: selectedCommunication);
+                        billProvider.bill = _curBill;
+                        Navigator.pushNamed(context, Summary.routeName);
+                      }
+                    },
                   ),
                 ],
               ),
@@ -275,6 +292,41 @@ class _CustomerDetailsState extends State<CustomerDetails> {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar appBar(BuildContext context) {
+    return AppBar(
+      leading: Container(
+        margin: const EdgeInsets.all(7),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: primary,
+            width: 1,
+          ),
+        ),
+        child: IconButton(
+          icon: Icon(
+            Icons.keyboard_arrow_left,
+            size: 25,
+            color: primary,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      elevation: 0,
+      backgroundColor: grey1,
+      title: const Text(
+        'Customer Details',
+        style: TextStyle(
+          color: Colors.black54,
+          fontSize: 23,
+        ),
+      ),
+      centerTitle: true,
     );
   }
 }

@@ -21,7 +21,7 @@ class ImageSlider extends StatelessWidget {
         itemCount: imgList.length,
         itemBuilder: (context, index, realIndex) {
           final urlImage = imgList[index];
-          return buildImage(urlImage, index);
+          return buildImage(urlImage, index, context);
         },
         options: CarouselOptions(
           autoPlay: autoPlay,
@@ -32,7 +32,7 @@ class ImageSlider extends StatelessWidget {
   }
 }
 
-Widget buildImage(String urlImage, int index) {
+Widget buildImage(String urlImage, int index, BuildContext context) {
   return Container(
     color: Colors.white,
     child: CachedNetworkImage(

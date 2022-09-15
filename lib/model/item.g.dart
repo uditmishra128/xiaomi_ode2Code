@@ -11,8 +11,8 @@ Item _$ItemFromJson(Map<String, dynamic> json) => Item(
       catId: json['catId'] as String?,
       name: json['name'] as String?,
       price: json['price'] as int?,
-      itemCount: json['itemCount'] == null ? 0 : json['itemCount'] as int,
       imgUrl: json['imgUrl'] as String?,
+      itemCount: json['itemCount'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
@@ -20,6 +20,6 @@ Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
       'catId': instance.catId,
       'name': instance.name,
       'price': instance.price,
-      'itemCount': instance.itemCount,
       'imgUrl': instance.imgUrl,
+      'itemCount': instance.itemCount,
     };

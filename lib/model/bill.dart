@@ -1,26 +1,32 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:xiomi_ode_to_code/model/item.dart';
-part 'billing.g.dart';
+part 'bill.g.dart';
+
+enum PaymentMethod { online, cash }
+
+enum ModeOFComm { whatsapp, email }
 
 @JsonSerializable(explicitToJson: true)
-class Billing {
-  final String? name;
-  final String? phone;
-  final String? email;
-  final String? address;
+class Bill {
+  final String? customerName;
+  final String? customerPhone;
+  final String? customerEmail;
+  final String? customerAddress;
+  final ModeOFComm? modeOfComm;
   final String? operatorId;
   final String? storeName;
   final String? invoice;
   final String? totalAmount;
   final String? taxAmount;
-  final String? paymentMethod;
+  final PaymentMethod? paymentMethod;
   final String? serviceOrderNumber;
   final List<Item>? items;
-  Billing(
-      {this.name,
-      this.phone,
-      this.email,
-      this.address,
+  Bill(
+      {this.customerName,
+      this.customerPhone,
+      this.customerEmail,
+      this.customerAddress,
+      this.modeOfComm,
       this.operatorId,
       this.storeName,
       this.invoice,
@@ -29,11 +35,12 @@ class Billing {
       this.paymentMethod,
       this.serviceOrderNumber,
       this.items});
-  Billing.named(
-      {this.name,
-      this.phone,
-      this.email,
-      this.address,
+  Bill.named(
+      {this.customerName,
+      this.customerPhone,
+      this.customerEmail,
+      this.customerAddress,
+      this.modeOfComm,
       this.operatorId,
       this.storeName,
       this.invoice,
@@ -42,25 +49,27 @@ class Billing {
       this.paymentMethod,
       this.serviceOrderNumber,
       this.items});
-  Billing copyWith({
-    final String? name,
-    final String? phone,
-    final String? email,
-    final String? address,
+  Bill copyWith({
+    final String? customerName,
+    final String? customerPhone,
+    final String? customerEmail,
+    final String? customerAddress,
+    final ModeOFComm? modeOfComm,
     final String? operatorId,
     final String? storeName,
     final String? invoice,
     final String? totalAmount,
     final String? taxAmount,
-    final String? paymentMethod,
+    final PaymentMethod? paymentMethod,
     final String? serviceOrderNumber,
     final List<Item>? items,
   }) =>
-      Billing.named(
-          name: name ?? this.name,
-          phone: phone ?? this.phone,
-          email: email ?? this.email,
-          address: address ?? this.address,
+      Bill.named(
+          customerName: customerName ?? this.customerName,
+          customerPhone: customerPhone ?? this.customerPhone,
+          customerEmail: customerEmail ?? this.customerEmail,
+          customerAddress: customerAddress ?? this.customerAddress,
+          modeOfComm: modeOfComm ?? this.modeOfComm,
           operatorId: operatorId ?? this.operatorId,
           storeName: storeName ?? this.storeName,
           invoice: invoice ?? this.invoice,
@@ -69,7 +78,7 @@ class Billing {
           paymentMethod: paymentMethod ?? this.paymentMethod,
           serviceOrderNumber: serviceOrderNumber ?? this.serviceOrderNumber,
           items: items ?? this.items);
-  factory Billing.fromJson(json) => _$BillingFromJson(json);
+  factory Bill.fromJson(json) => _$BillFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BillingToJson(this);
+  Map<String, dynamic> toJson() => _$BillToJson(this);
 }

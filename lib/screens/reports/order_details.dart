@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/model/item.dart';
 import 'package:xiomi_ode_to_code/screens/reports/reports_tile.dart';
 import 'package:xiomi_ode_to_code/screens/summary/order_tile.dart';
 import '../../utils/color.dart';
@@ -72,7 +73,9 @@ class OrderDetails extends StatelessWidget {
                   itemCount: 5,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return const OrderTile();
+                    return OrderTile(
+                      item: Item(),
+                    );
                   },
                 ),
               ),

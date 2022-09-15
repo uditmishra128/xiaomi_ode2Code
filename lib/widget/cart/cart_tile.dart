@@ -77,7 +77,7 @@ class CartTile extends StatelessWidget {
                                     ),
                                   ),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: onDlt,
                                     child: Card(
                                       shape: RoundedRectangleBorder(
                                         side: const BorderSide(
@@ -126,7 +126,7 @@ class CartTile extends StatelessWidget {
             onCounterChange(false);
           },
           iconBorderRadius:
-              const BorderRadius.horizontal(right: Radius.circular(10)),
+              const BorderRadius.horizontal(left: Radius.circular(10)),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12.0),
