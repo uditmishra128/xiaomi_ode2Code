@@ -51,6 +51,8 @@ dependencies:
   cloud_firestore: ^3.4.7
   page_transition: ^2.0.9
   cached_network_image: ^3.2.1
+  lottie: ^1.4.2
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +81,7 @@ flutter:
     - assets/images/logos/
     - assets/images/elec_items/
     - assets/images/elec_items/gif/
+    - assets/lottie/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

@@ -6,6 +6,8 @@ import 'package:xiomi_ode_to_code/screens/auth/details.dart';
 import 'package:xiomi_ode_to_code/screens/customer_details/customer_details.dart';
 import 'package:xiomi_ode_to_code/screens/dash.dart';
 import 'package:xiomi_ode_to_code/screens/home/search_screen.dart';
+import 'package:xiomi_ode_to_code/screens/payment/payment_loading.dart';
+import 'package:xiomi_ode_to_code/screens/payment/payment_success.dart';
 import 'package:xiomi_ode_to_code/screens/product_discription/product_discription.dart';
 import 'package:xiomi_ode_to_code/screens/splash/splash.dart';
 import 'package:xiomi_ode_to_code/screens/summary/summary.dart';
@@ -57,6 +59,16 @@ class RouteGenerator {
       case CustomerDetails.routeName:
         return PageTransition(
             child: const CustomerDetails(),
+            settings: settings,
+            type: PageTransitionType.fade);
+      case PaymentLoading.routeName:
+        return PageTransition(
+            child: const PaymentLoading(),
+            settings: settings,
+            type: PageTransitionType.fade);
+      case PaymentSuccess.routeName:
+        return PageTransition(
+            child: const PaymentSuccess(),
             settings: settings,
             type: PageTransitionType.fade);
       default:

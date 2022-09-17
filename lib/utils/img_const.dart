@@ -7,6 +7,8 @@ const String diwaliGif = 'assets/images/elec_items/gif/diwali_gif.gif';
 const String miTV = 'assets/images/elec_items/tv_1.jpg';
 const String mobile = 'assets/images/elec_items/mobile.jpg';
 const String dummyProfile = 'assets/images/avatar.jpg';
+const String success = 'assets/lottie/sucess.json';
+const String paymentLoading = 'assets/lottie/payment_loading.json';
 
 final List<String> imgListHome = [
   'https://firebasestorage.googleapis.com/v0/b/xiomiodetocode.appspot.com/o/items%2Foffers_slider%2Fhome1.jpg?alt=media&token=e6c17966-2aa9-4629-b273-de6b045fc7dd',

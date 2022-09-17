@@ -1,23 +1,24 @@
 // ignore_for_file: unnecessary_const
 
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/model/bill.dart';
 import 'package:xiomi_ode_to_code/screens/reports/order_details.dart';
 
 class ReportTile extends StatelessWidget {
-  const ReportTile({Key? key}) : super(key: key);
-  final String customerName = 'Hari Kumar Juneja';
-  final int itemCount = 2;
-  final int totalPrice = 89647;
-  final int serviceOrderNumber = 7586438967;
-  final int invoiceNumber = 347348963;
+  final Bill bill;
+  const ReportTile({Key? key, required this.bill}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const OrderDetails()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => OrderDetails(
+                        bill: bill,
+                      )));
         },
         child: Card(
           elevation: 6,
@@ -39,7 +40,7 @@ class ReportTile extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                customerName,
+                                bill.customerName ?? "yash",
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                     color: Colors.black,
@@ -59,15 +60,15 @@ class ReportTile extends StatelessWidget {
                         ),
                         ReportTileDetails(
                           firstText: 'Transaction',
-                          secondText: '₹ $totalPrice',
+                          secondText: '₹ ${bill.totalAmount}',
                         ),
                         ReportTileDetails(
                           firstText: 'Service Order Number',
-                          secondText: '$serviceOrderNumber',
+                          secondText: '${bill.serviceOrderNumber}',
                         ),
                         ReportTileDetails(
                           firstText: 'Invoice Number',
-                          secondText: '$invoiceNumber',
+                          secondText: '${bill.serviceOrderNumber}',
                         ),
                       ],
                     ),

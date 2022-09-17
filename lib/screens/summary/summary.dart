@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xiomi_ode_to_code/provider/cart_provider.dart';
+import 'package:xiomi_ode_to_code/screens/payment/payment_loading.dart';
 import 'package:xiomi_ode_to_code/screens/summary/order_tile.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/widget/common/custom_btn.dart';
@@ -55,10 +56,12 @@ class _SummaryState extends State<Summary> {
       bottomSheet: Padding(
         padding: const EdgeInsets.all(12.0),
         child: CustomButton(
-          title: 'Proceed To Billing',
+          title: 'Proceed To Payment',
           color: Colors.deepOrangeAccent,
           curve: 8,
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, PaymentLoading.routeName);
+          },
         ),
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xiomi_ode_to_code/handler/items.dart';
 import 'package:xiomi_ode_to_code/model/bill.dart';
 import 'package:xiomi_ode_to_code/provider/bill_provider.dart';
+import 'package:xiomi_ode_to_code/provider/cart_provider.dart';
 import 'package:xiomi_ode_to_code/screens/summary/summary.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/decoration.dart';
@@ -22,6 +24,7 @@ class CustomerDetails extends StatefulWidget {
 class _CustomerDetailsState extends State<CustomerDetails> {
   ModeOFComm selectedCommunication = ModeOFComm.whatsapp;
   late Bill _curBill;
+  int subtotal = 0;
   late String cName, phoneNo, emailAddress, communicationChoice, address;
   late FocusNode name, phone, email, deliveryAddress;
   GlobalKey<FormState> customerDetailsKey = GlobalKey<FormState>();
@@ -51,6 +54,8 @@ class _CustomerDetailsState extends State<CustomerDetails> {
   @override
   Widget build(BuildContext context) {
     final billProvider = Provider.of<BillProvider>(context, listen: false);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+
     return Scaffold(
       appBar: appBar(context),
       body: SafeArea(
@@ -241,8 +246,18 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       FocusScope.of(context).requestFocus(FocusNode());
                       final form = customerDetailsKey.currentState;
                       if (form!.validate()) {
+                        for (var i in cartProvider.cartItems) {
+                          subtotal += (i.itemCount * i.price!);
+                        }
                         _curBill = _curBill.copyWith(
-                            modeOfComm: selectedCommunication);
+                            modeOfComm: selectedCommunication,
+                            totalAmount: subtotal.toDouble(),
+                            invoice: getRandom().toString(),
+                            serviceOrderNumber: getRandom().toString(),
+                            items: cartProvider.cartItems,
+                            operatorId: '4789951756',
+                            paymentMethod: PaymentMethod.online,
+                            storeName: 'Mi home');
                         billProvider.bill = _curBill;
                         Navigator.pushNamed(context, Summary.routeName);
                       }

@@ -15,8 +15,8 @@ Bill _$BillFromJson(Map<String, dynamic> json) => Bill(
       operatorId: json['operatorId'] as String?,
       storeName: json['storeName'] as String?,
       invoice: json['invoice'] as String?,
-      totalAmount: json['totalAmount'] as String?,
-      taxAmount: json['taxAmount'] as String?,
+      totalAmount: json['totalAmount'] as double?,
+      taxAmount: json['taxAmount'] as double?,
       paymentMethod:
           $enumDecodeNullable(_$PaymentMethodEnumMap, json['paymentMethod']),
       serviceOrderNumber: json['serviceOrderNumber'] as String?,

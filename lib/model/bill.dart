@@ -16,8 +16,8 @@ class Bill {
   final String? operatorId;
   final String? storeName;
   final String? invoice;
-  final String? totalAmount;
-  final String? taxAmount;
+  final double? totalAmount;
+  final double? taxAmount;
   final PaymentMethod? paymentMethod;
   final String? serviceOrderNumber;
   final List<Item>? items;
@@ -58,8 +58,8 @@ class Bill {
     final String? operatorId,
     final String? storeName,
     final String? invoice,
-    final String? totalAmount,
-    final String? taxAmount,
+    final double? totalAmount,
+    final double? taxAmount,
     final PaymentMethod? paymentMethod,
     final String? serviceOrderNumber,
     final List<Item>? items,

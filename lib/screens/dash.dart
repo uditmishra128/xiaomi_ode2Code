@@ -30,6 +30,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   void initState() {
     pageController = PageController();
     getItems();
+    getAllBills(context: context);
     super.initState();
   }
 

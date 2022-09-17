@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xiomi_ode_to_code/model/user.dart';
+import 'package:xiomi_ode_to_code/screens/dash.dart';
 import 'package:xiomi_ode_to_code/utils/color.dart';
 import 'package:xiomi_ode_to_code/utils/decoration.dart';
 import 'package:xiomi_ode_to_code/utils/img_const.dart';
@@ -146,6 +147,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   FocusScope.of(context).requestFocus(FocusNode());
                   final form = detailKey.currentState;
                   if (form!.validate()) {
+                    Navigator.pushNamed(context, DashBoardScreen.routeName);
                   } else {
                     showFlagMsg(
                         context: context,

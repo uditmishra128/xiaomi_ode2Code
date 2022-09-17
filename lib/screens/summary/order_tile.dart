@@ -9,8 +9,6 @@ import 'package:xiomi_ode_to_code/utils/text_style.dart';
 class OrderTile extends StatelessWidget {
   final Item item;
   const OrderTile({Key? key, required this.item}) : super(key: key);
-  final int itemCount = 2;
-  final int itemPrice = 100000;
   @override
   Widget build(BuildContext context) {
     return Padding(

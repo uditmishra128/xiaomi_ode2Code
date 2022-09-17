@@ -10,4 +10,13 @@ class BillProvider extends ChangeNotifier {
     _bill = bill;
     notifyListeners();
   }
+
+  List<Bill> _bills = [];
+
+  List<Bill> get bills => _bills;
+
+  set changebills(List<Bill> i) {
+    _bills = i;
+    notifyListeners();
+  }
 }

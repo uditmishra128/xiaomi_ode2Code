@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:xiomi_ode_to_code/model/bill.dart';
 import 'package:xiomi_ode_to_code/model/item.dart';
 import 'package:xiomi_ode_to_code/screens/reports/reports_tile.dart';
 import 'package:xiomi_ode_to_code/screens/summary/order_tile.dart';
 import '../../utils/color.dart';
 
 class OrderDetails extends StatelessWidget {
-  const OrderDetails({Key? key}) : super(key: key);
-  final String customerName = 'Hari Kumar Juneja';
-  final int itemCount = 2;
-  final int totalPrice = 89647;
-  final int serviceOrderNumber = 7586438967;
-  final int invoiceNumber = 347348963;
+  final Bill bill;
+  const OrderDetails({Key? key, required this.bill}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +19,7 @@ class OrderDetails extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                customerName,
+                bill.customerName ?? "yash",
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     color: Colors.black,
@@ -42,21 +39,21 @@ class OrderDetails extends StatelessWidget {
               ),
               ReportTileDetails(
                 firstText: 'Transaction',
-                secondText: '₹ $totalPrice',
+                secondText: '₹ ${bill.totalAmount}',
               ),
               const SizedBox(
                 height: 8,
               ),
               ReportTileDetails(
                 firstText: 'Service Order Number',
-                secondText: '$serviceOrderNumber',
+                secondText: '${bill.serviceOrderNumber}',
               ),
               const SizedBox(
                 height: 8,
               ),
               ReportTileDetails(
                 firstText: 'Invoice Number',
-                secondText: '$invoiceNumber',
+                secondText: '${bill.invoice}',
               ),
               const SizedBox(
                 height: 8,
@@ -70,11 +67,11 @@ class OrderDetails extends StatelessWidget {
               ),
               Flexible(
                 child: ListView.builder(
-                  itemCount: 5,
+                  itemCount: bill.items?.length ?? 0,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return OrderTile(
-                      item: Item(),
+                      item: bill.items![index],
                     );
                   },
                 ),
