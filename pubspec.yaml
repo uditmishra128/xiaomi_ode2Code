@@ -52,7 +52,7 @@ dependencies:
   page_transition: ^2.0.9
   cached_network_image: ^3.2.1
   lottie: ^1.4.2
-  dio: ^4.0.6
+  dio: ^5.0.3
 
 dev_dependencies:
   flutter_test:
