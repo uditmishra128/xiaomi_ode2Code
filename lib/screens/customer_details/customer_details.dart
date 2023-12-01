@@ -211,7 +211,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                         selectedCommunication == ModeOFComm.whatsapp
                             ? Colors.green
                             : Colors.black26,
-                        Icons.whatsapp,
+                        Icons.wechat,
                         'Whatsapp',
                         () {
                           setState(() {
